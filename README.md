@@ -224,12 +224,12 @@ class MqttTestPlugin(octoprint.plugin.StartupPlugin):
 			if "mqtt_unsubscribe" in helpers:
 				self.mqtt_unsubscribe = helpers["mqtt_unsubscribe"]
 
-		self.mqtt_publish("octoprint/plugin/mqtt_test/pub", "test plugin startup")
-		self.mqtt_subscribe("octoprint/plugin/mqtt_test/sub", self._on_mqtt_subscription)
+		self.mqtt_publish("octoPrint/plugin/mqtt_test/pub", "test plugin startup")
+		self.mqtt_subscribe("octoPrint/plugin/mqtt_test/sub", self._on_mqtt_subscription)
 
 	def _on_mqtt_subscription(self, topic, message, retained=None, qos=None, *args, **kwargs):
 		self._logger.info("Yay, received a message for {topic}: {message}".format(**locals()))
-		self.mqtt_publish("octoprint/plugin/mqtt_test/pub", "echo: " + message)
+		self.mqtt_publish("octoPrint/plugin/mqtt_test/pub", "echo: " + message)
 
 
 __plugin_implementations__ = [MqttTestPlugin()]
